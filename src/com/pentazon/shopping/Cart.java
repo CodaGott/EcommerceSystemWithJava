@@ -16,7 +16,7 @@ public class Cart {
     private Logger logger = Logger.getLogger(Cart.class.getName());
     private Map<String, CartItem> items;
     private ProductService productService;
-    private BigDecimal total;
+    private BigDecimal total = BigDecimal.ZERO;
 
     public Cart(){
         items = new HashMap<>();
@@ -27,7 +27,7 @@ public class Cart {
 //        return items;
 //    }
 
-    public void addToCart(Product product) {
+    public void addToCart(Product product, int quantity ) {
         if (verifiedProduct(product) ){
             CartItem item = items.get(product.getProductId());
             if(item == null){
@@ -66,10 +66,11 @@ public class Cart {
     }
 
     public BigDecimal calculateTotal(){
+
         if(!items.isEmpty()){
             Iterator<CartItem> cartItems = items.values().iterator();
             while(cartItems.hasNext()){
-                this.total.add(cartItems.next().getTotal());
+                this.total = this.total.add(cartItems.next().getTotal());
             }
         }
 

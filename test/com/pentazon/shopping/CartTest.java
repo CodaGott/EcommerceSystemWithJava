@@ -55,15 +55,21 @@ class CartTest {
         Product plantainChips = new Product("Plantain Chips", "Semicolon chips",
                 new BigDecimal(50.00));
         plantainChips.setProductId("AD001");
-        cart.addToCart(plantainChips);
+        cart.addToCart(plantainChips, 9);
         Product shirt = new Product("Shirst", "vintage shirt",
                 new BigDecimal(5000));
         shirt.setProductId("AD003");
         cart.addToCart(shirt);
         assertFalse(cart.getItems().isEmpty());
         assertEquals(2, cart.getItems().size());
+        BigDecimal cartTotal = cart.calculateTotal();
+        assertEquals(5050, cartTotal.intValue());
+
         CartItem chipItem = cart.getItems().get(plantainChips.getProductId());
         assertEquals(1, chipItem.getQuantity());
-        chipItem =
+//        chipItem =
+
+
+        cart.addToCart(shirt, 3);
     }
 }
