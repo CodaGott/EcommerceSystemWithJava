@@ -10,7 +10,7 @@ public interface ProductService {
      * @param productId
      * @return
      */
-    Product findProduct(String productId);
 
-    Product findProductById(String id) throws ProductException;
+
+    public Product findProductById(String id) throws ProductException;
 }
