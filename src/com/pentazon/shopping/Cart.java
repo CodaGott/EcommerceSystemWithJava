@@ -5,8 +5,10 @@ import com.pentazon.product.ProductException;
 import com.pentazon.product.ProductService;
 import com.pentazon.product.ProductServiceImpl;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -14,6 +16,7 @@ public class Cart {
     private Logger logger = Logger.getLogger(Cart.class.getName());
     private Map<String, CartItem> items;
     private ProductService productService;
+    private BigDecimal total;
 
     public Cart(){
         items = new HashMap<>();
@@ -60,5 +63,20 @@ public class Cart {
 
     public Map<String, CartItem> getItems(){
         return items;
+    }
+
+    public BigDecimal calculateTotal(){
+        if(!items.isEmpty()){
+            Iterator<CartItem> cartItems = items.values().iterator();
+            while(cartItems.hasNext()){
+                this.total.add(cartItems.next().getTotal());
+            }
+        }
+
+        return this.getTotal();
+    }
+
+    private BigDecimal getTotal() {
+        return this.total;
     }
 }
