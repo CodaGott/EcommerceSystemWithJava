@@ -24,7 +24,7 @@ public class Cart {
 //        return items;
 //    }
 
-    public void addToCart(Product product, int quantity) {
+    public void addToCart(Product product) {
         if (verifiedProduct(product) ){
             CartItem item = items.get(product.getProductId());
             if(item == null){
