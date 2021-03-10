@@ -11,4 +11,6 @@ public interface ProductService {
      * @return
      */
     Product findProduct(String productId);
+
+    Product findProductById(String id) throws ProductException;
 }
